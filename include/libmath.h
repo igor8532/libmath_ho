@@ -1,5 +1,7 @@
 #pragma once
 
+#include <climits>
+
 namespace libmath
 {
 
@@ -91,7 +93,7 @@ int power(int a, int b, int& c)
         return -4;
     }
 
-    int c = 1;
+    c = 1;
     for (int i = 0; i < b; ++i) {
         // Проверка на переполнение
         if (c > INT_MAX / a) {

@@ -90,10 +90,19 @@ int power(int a, int b, int& c)
     }
 
     // Ситуация, когда a == 0 и b == 0 — математически не определена
-    if (a == 0 && b == 0)
+    if (a == 0)
     {
-        return -4;
+	if (b == 0)
+	{
+	    return -4;
+	}
+	else
+	{
+	    c = 0;
+	    return 0;
+	}
     }
+
     c = 1;
     for (int i = 0; i < b; ++i)
     {

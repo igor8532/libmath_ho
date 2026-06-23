@@ -23,12 +23,12 @@ int addition(int a, int b, int& c)
 
 int subtraction(int a, int b, int& c)
 {
-    if ((b > 0) && (a > INT_MAX - b))
+    if ((b < 0) && (a > INT_MAX + b))
     {
 	return -2;
     }
 
-    if ((b < 0) && (a < INT_MIN - b))
+    if ((b > 0) && (a < INT_MIN + b))
     {
 	return -2;
     }
@@ -106,12 +106,14 @@ int power(int a, int b, int& c)
     c = 1;
     for (int i = 0; i < b; ++i)
     {
-        // Проверка на переполнение
-        if (c > INT_MAX / a)
-       	{
-            return -2;
-        }
-        c = c * a;
+	long long next = static_cast<long long>(c) * a;
+
+	if ((next > INT_MAX) || (next < INT_MIN))
+	{
+	    return -2;
+	}
+
+	c = static_cast<int>(next);
     }
     return 0;
 }
